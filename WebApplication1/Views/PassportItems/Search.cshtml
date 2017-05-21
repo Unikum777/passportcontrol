@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApplication1.Models.PassportItem>
+
+@{
+    ViewBag.Title = "Поиск";
+}
+
+<h2>Поиск</h2>
+
+<p>
+    @Html.ActionLink("Добавить паспорт", "Create")
+</p>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск по фамилии..">
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Surname)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.MiddleName)</th>
+            <th>@Html.DisplayNameFor(model => model.Birthday)</th>
+            <th>@Html.DisplayNameFor(model => model.Sex)</th>
+            <th>@Html.DisplayNameFor(model => model.PlaceOfBirthItem)</th>
+            <th>@Html.DisplayNameFor(model => model.Series)а</th>
+            <th>@Html.DisplayNameFor(model => model.Number)</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday, "ShortDateTime")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceOfBirthItem.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Series)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementsByTagName("tbody");
+        li = ul[0].getElementsByTagName('tr');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 1; i < li.length; i++) {
+            a = li[i].getElementsByTagName("td")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+

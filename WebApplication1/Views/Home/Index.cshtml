@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron text-center">
+    <h1>Вас приветствует система Passport Control</h1>
+    <p>Система хранения паспортных данных</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>@Html.ActionLink("Список паспортных данных", "Index", "PassportItems")</h3>
+            <p>Здесь можно посмотреть полный список всех паспортных данных в системе..</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>
+                @Html.ActionLink("Добавить новую анкету", "Create", "PassportItems")
+            
+        </h3>
+            <p>Здесь можно добавить новую запись в список..</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>
+                @Html.ActionLink("Поиск по фамилии", "Search", "PassportItems")
+            </h3>
+            <p>Поиск по фамилии среди паспортных данных..</p>
+        </div>
+    </div>
+</div>
